@@ -1,16 +1,8 @@
 from django.db import models
 
-class User(models.Model):
-    user_ID = models.ManyToManyField ()
-    budget_ID = models.ManyToManyField ()
-    email =
-    password =
-    name = models.CharField( max_length=255, )
-
-
 class CurrentBudget(models.Model):
-    user_ID = models.ManyToManyField ()
-    budget_ID = models.ManyToManyField ()
+    user_ID = models.CharField(max_length=255)
+    budget_ID = models.CharField(max_length=255)
     moneySum = models.IntegerField(default = 0)
     DateOfStart = models.DateTimeField( null=True, blank=True)
     DateOfFinish = models.DateTimeField( null=True, blank=True)
@@ -20,6 +12,13 @@ class CurrentBudget(models.Model):
     AvaibleSumToday = models.IntegerField(default = 0)
 
 class Data(models.Model):
-    user_ID = models.ManyToManyField ()
+    user_ID = models.CharField(max_length=255)
     SpendSum = models.IntegerField(default = 0)
     data = models.DateTimeField( null=True, blank=True)
+
+class User(models.Model):
+    user_ID = models.CharField(max_length=255)
+    budget_ID = models.CharField(max_length=255)
+    email = models.EmailField()
+    password = models.CharField(max_length=255)
+    name = models.CharField(max_length=255)
