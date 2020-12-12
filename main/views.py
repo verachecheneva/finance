@@ -1,9 +1,9 @@
 from django.shortcuts import render
-from .models import Task
+from .models import User
 
 
 def index(request):
-    tasks = Task.objects.all()
+    tasks = User.objects.all()
     return render(request, 'main/index.html',)
 
 
