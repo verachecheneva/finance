@@ -1,5 +1,5 @@
 from django.db import models
-
+#ПРИВЕТИКИ
 class CurrentBudget(models.Model):
     user_ID = models.CharField(max_length=255)
     budget_ID = models.CharField(max_length=255)
