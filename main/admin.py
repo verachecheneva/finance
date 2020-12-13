@@ -1,7 +1,7 @@
 from django.contrib import admin
-from .models import User, CurrentBudjet
+from .models import User, CurrentBudget
 admin.site.register(User)
-admin.site.register(CurrentBudjet)
+admin.site.register(CurrentBudget)
 
 
 
