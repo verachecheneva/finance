@@ -6,13 +6,16 @@
   <title>Home</title>
 </head>
 <body>
-  <h1>Hello {{User.name}} !</h1>
+  {% for user in users %}
+    <h1>Hello {{ user.name }} !</h1>
+  {% endfor %}
+
 
   {% for budget in budgets %}
     <div>
-      <h2>Текущий бюджет:</h2> 
+      <h2>{{ budget.name }}:</h2> 
       <div>
-        <h3>Сейчас у Вас есть:
+        <h3>Бюджет:
           {{ budget.moneySum }} руб.
         </h3>
     </div> 
@@ -28,7 +31,7 @@
     </div>
     <div>
       <h3>У Вас осталось:
-        {{ budget.RestSum }} руб.
+        {{ budget.calcSpendSum }} руб.
       </h3>
     </div>
     <div>

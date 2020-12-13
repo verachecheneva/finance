@@ -4,8 +4,11 @@ from django.urls import reverse
 
 def home(request):
     budget_is = CurrentBudget.objects.all()
-    return render(request, 'blog/home.html', {'budgets':budget_is})
-# {'budgets':budget_is}
+    user_is = User.objects.all()
+    return render(request, 'blog/home.html', {'budgets':budget_is, 'users': user_is})
+
+
+
 
 # def User_info(request):
 #     return render(request, 'main/user_info.html')

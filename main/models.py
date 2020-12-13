@@ -18,8 +18,11 @@ class CurrentBudget(models.Model):
     AvaibleSumToday = models.IntegerField(default = 0)
     name = models.CharField(max_length=255)
 
-    def __str__(self):
-        return self.title
+    def calcSpendSum(self):
+        
+        return (self.moneySum - self.SpendSum)/30
+    # def __str__(self):
+    #     return self.title
 
     
 
