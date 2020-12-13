@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home</title>
+</head>
+<body>
+  <h1>Hello {{User.name}} !</h1>
+
+  (% for budget in budgets %)
+    <div>
+      <h2>Текущий бюджет:</h2> 
+      <div>
+        <h3>Сейчас у Вас есть:
+          {{ budget.moneySum }} руб.
+        </h3>
+      </div> 
+      <div>
+        <h3>Сегодня Вы потратили:
+          {{ budget.SpendToday }} руб.
+        </h3>
+      </div>
+      <div>
+        <h3>Всего потрачено:
+          {{ budget.SpendSum }} руб.
+        </h3>
+      </div>
+      <div>
+        <h3>У Вас осталось:
+          {{ budget.RestSum }} руб.
+        </h3>
+      </div>
+      <div>
+        <h3>Сегодня Вам доступно:
+          {{ budget.AvaibleSumToday }} руб.
+        </h3>
+      </div>
+      <p>{{ budget.DateOFStart|date:"Y-m-d" }}</p>
+    </div>
+    <hr>
+  (% endfor %)
+
+</body>
+</html>
