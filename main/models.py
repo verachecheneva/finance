@@ -1,10 +1,10 @@
 from django.db import models
-from django.contrib.auth.models import User
+# from django.contrib.auth.models import User
 
-class client(models.Model, User):
-    # email = models.EmailField()
-    # password = models.CharField(max_length=255)
-    name = User.name
+class User(models.Model):
+    email = models.EmailField()
+    password = models.CharField(max_length=255)
+    name = models.CharField(max_length=255)
     #  user_ID = models.CharField(max_length=255) автоматом
     #  budget_ID = models.CharField(max_length=255) обратные ссылки
 

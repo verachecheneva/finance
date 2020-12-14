@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home</title>
+</head>
+<body>
+  {% for user in users %}
+    <h1>Hello {{ user.name }} !</h1>
+  {% endfor %}
+
+
+  {% for budget in budgets %}
+    <div>
+      <h2>{{ budget.name }}:</h2> 
+      <div>
+        <h3>Бюджет:
+          {{ budget.moneySum }} руб.
+        </h3>
+    </div> 
+    <div>
+      <h3>Сегодня Вы потратили:
+        {{ budget.SpendToday }} руб.
+      </h3>
+    </div>
+    <div>
+      <h3>Всего потрачено:
+        {{ budget.SpendSum }} руб.
+      </h3>
+    </div>
+    <div>
+      <h3>У Вас осталось:
+        {{ budget.calcSpendSum }} руб.
+      </h3>
+    </div>
+    <div>
+      <h3>Сегодня Вам доступно:
+        {{ budget.AvaibleSumToday }} руб.
+      </h3>
+    </div>
+    <p>{{ budget.DateOFStart|date:"Y-m-d" }}</p>
+    </div>
+    <hr>
+  {% endfor %}
+    
+</body>
+</html>

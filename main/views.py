@@ -1,11 +1,16 @@
 from django.shortcuts import render
-from . models import client, CurrentBudget
+from . models import User, CurrentBudget
 from django.urls import reverse
 
 def home(request):
     budget_is = CurrentBudget.objects.all()
-    user_is = client.objects.all()
-    return render(request, 'blog/home.html', {'budgets':budget_is, 'clients': user_is})
+    user_is = User.objects.all()
+    return render(request, 'blog/home.html', {'budgets':budget_is, 'Users': user_is})
+
+def account(request):
+    budget_is = CurrentBudget.objects.all()
+    user_is = User.objects.all()
+    return render(request, 'blog/account.html', {'budgets':budget_is, 'Users': user_is})
 
 
 
