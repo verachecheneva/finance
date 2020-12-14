@@ -6,8 +6,11 @@
   <title>Authentification</title>
 </head>
 <body>
-    <p>Logged out!</p>  
+    <p>Ты вышел из аккаунта! Возвращайся скорее!</p>  
 
-    <a href="{% url 'login'%}">Click here to login again.</a>  
+    <p><a href="{% url 'login'%}">Хочешь войти в аккаунт?</a></p>
+
+    <p><a href="{% url 'home' %}">Хочешь вернуться на начальную страницу?</a></p>
+
 </body>
 </html>

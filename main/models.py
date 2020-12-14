@@ -1,11 +1,12 @@
 from django.db import models
+from django.contrib.auth.models import User
 
-class User(models.Model):
-    email = models.EmailField()
-    password = models.CharField(max_length=255)
-    name = models.CharField(max_length=255)
-    # user_ID = models.CharField(max_length=255) автоматом
-    # budget_ID = models.CharField(max_length=255) обратные ссылки
+class client(models.Model, User):
+    # email = models.EmailField()
+    # password = models.CharField(max_length=255)
+    name = User.name
+    #  user_ID = models.CharField(max_length=255) автоматом
+    #  budget_ID = models.CharField(max_length=255) обратные ссылки
 
 class CurrentBudget(models.Model):
     user_ID = models.ForeignKey(User, on_delete = models.CASCADE)
