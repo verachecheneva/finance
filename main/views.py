@@ -8,9 +8,8 @@ def home(request):
     return render(request, 'blog/home.html', {'budgets':budget_is, 'Users': user_is})
 
 def account(request):
-    budget_is = CurrentBudget.objects.all()
-    user_is = User.objects.all()
-    return render(request, 'blog/account.html', {'budgets':budget_is, 'Users': user_is})
+    budget_is = CurrentBudget.objects.filter(user_ID=request.user)
+    return render(request, 'blog/account.html', {'budgets':budget_is, })
 
 
 

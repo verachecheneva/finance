@@ -6,9 +6,9 @@
   <title>Home</title>
 </head>
 <body>
-  {% for user in users %}
-    <h1>Hello {{ user.name }} !</h1>
-  {% endfor %}
+  {% comment %} {% for user in users %} {% endcomment %}
+    {% comment %} <h1>Hello {{ user.name }} !</h1>
+  {% endfor %} {% endcomment %}
 
 
   {% for budget in budgets %}
