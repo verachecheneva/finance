@@ -9,7 +9,10 @@ def home(request):
 
 def account(request):
     budget_is = CurrentBudget.objects.filter(user_ID=request.user)
-    return render(request, 'blog/account.html', {'budgets':budget_is, })
+    return render(request, 'blog/account.html', {'budgets':budget_is })
+
+def register(request):
+    return render(request, 'blog/register.html' )
 
 
 
