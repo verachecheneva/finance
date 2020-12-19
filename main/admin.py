@@ -19,7 +19,7 @@ class UserAdmin(DjangoUserAdmin):
     )
     list_display = ('email', 'first_name', 'last_name',)
     search_fields = ('email', 'first_name', 'last_name')
-    ordering = ('email')
+    ordering = [('email')]
 
 
 # Register your models here.
