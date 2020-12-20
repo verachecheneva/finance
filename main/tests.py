@@ -4,6 +4,7 @@ import requests
 from .models import CurrentBudget, User
 
 class TestRegistrationProfile(TestCase):
+    """регистрируем пользователя, с которым будут проходить тесты"""
     def setUp(self):
         self.client = Client()
         self.user = User.objects._create_user(name = 'sarah', email='flower@gmail.com', password='qazwsx1234')
