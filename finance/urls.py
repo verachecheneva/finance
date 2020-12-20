@@ -20,13 +20,10 @@ from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
-<<<<<<< HEAD
-    path('admin/', admin.site.urls),  """ URL-адрес раздела администрирования""",
-    path('', include('main.urls')),   """ возвращут домашнюю страничку, делает доступным последущий переход по URL-адресам, указанным в urls.py папки main""",
-    path('accounts/', include('django.contrib.auth.urls')),
-=======
-    path('admin/', admin.site.urls),   """URL-адрес раздела администрирования"""
-    path('', include('main.urls')),   """возвращут домашнюю страничку, делает доступным последущий переход по URL-адресам, указанным в urls.py папки main"""
-    path('accounts/', include('django.contrib.auth.urls')), """позволяет переходить по URL-адресам внутри /accounts, позволяя использовать систему аутентификации пользователя"""
->>>>>>> 9910fa1dcab6b4280a204b7c4bb71e35108c5c21
+    """URL-адрес раздела администрирования""",
+    path('admin/', admin.site.urls),  
+    """возвращут домашнюю страничку, делает доступным последущий переход по URL-адресам, указанным в urls.py папки main""", 
+    path('', include('main.urls')),   
+    """позволяет переходить по URL-адресам внутри /accounts, позволяя использовать систему аутентификации пользователя""",
+    path('accounts/', include('django.contrib.auth.urls')), 
 ]
