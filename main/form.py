@@ -1,5 +1,5 @@
 #class AddBudgetForm(forms.Form)
-
+"""производим импорт функций из библиотек, а также моделей и форм из файлов нашего приложения"""
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from .models import User, CurrentBudget
