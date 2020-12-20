@@ -14,6 +14,7 @@ class SignUpForm(UserCreationForm):
 # создание бюджета
 class AddBudget(forms.ModelForm):
     name = forms.CharField(label='Введите название бюджетаб', widget=forms.TextInput())
+    # moneySum = forms.
     SpendToday = forms.CharField(label='Сколько денег потратили сеглня', widget=forms.NumberInput())
     class Meta:
         model = CurrentBudget

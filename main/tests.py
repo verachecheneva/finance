@@ -6,7 +6,7 @@ from .models import CurrentBudget, User
 class TestRegistrationProfile(TestCase):
     def setUp(self):
         self.client = Client()
-        self.user = User.objects._create_user(username='sarah', email='flower@gmail.com', password='qazwsx1234')
+        self.user = User.objects._create_user(name = 'sarah', email='flower@gmail.com', password='qazwsx1234')
 
     def test_user_has_profile(self):
         self.client.force_login(self.user, backend=None)
@@ -15,7 +15,7 @@ class TestRegistrationProfile(TestCase):
     
     def test_test_registered_user_new_budget(self):
         self.client.force_login(self.user, backend=None)
-        self.client.post(reverse('budget_new'),{'new': 'Test', 'SpendToday': 222})
+        self.client.post(reverse('budget_new'),{'name': 'Test', 'SpendToday': 222})
         self.assertEqual(CurrentBudget.objects.count(), 1)
         budget = CurrentBudget.objects.first()
         self.assertEqual(budget.name, 'Test')
