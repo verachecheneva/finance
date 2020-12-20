@@ -1,6 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from . models import User, CurrentBudget
 from django.urls import reverse
+from django.views.generic.base import View
+from .form import createBudget
+
 
 def home(request):
     budget_is = CurrentBudget.objects.all()
@@ -25,7 +28,43 @@ def register(request):
     return render(request, 'registration/register.html', {'user_form': user_form})
 
 
+def budget_new(request):
+    if request.method == 'POST':
+        form = CurrentBudget(request.POST)
+        if form.is_valid():
+            budget = form.save(commit=False)
+            budget.SpendToday = request.user
+            budget.save()
+            return redirect('budget_detail', pk=budget.pk)
+        else:
+            form = CurrentBudget()
+    return render(request, 'blog/budget_edit.html', {'form': form})
 
+
+    # contacts_form_data = {}
+
+    # if request.method == POST:
+    #     # contacts_form_data = request.POST
+    #     name = request.POST.get('name')
+    #     SpendToday = request.POST.get('SpendToday')
+
+    # contacts_form_data.update({'name':name})
+
+    # context = {
+    #     'page_header': 'New Budget',
+    #     'contacts_form_data':  contacts_form_data,
+    # }
+    # return render(request, 'blog/home.html', context)
+# class AddBudget(View):
+#     def post(self, request, pk):
+#         form = createBudget(request.POST)
+#         if form.is_valid():
+#             form = form.save(commit=False)
+#             form.user_ID = pk
+#             form.save()
+#         return redirect("/")
+#         # budget_name = request.POST['name']
+#         # budget_SpendToday = request.POST['SpendToday']
 
 
 # def User_info(request):
