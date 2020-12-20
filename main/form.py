@@ -11,4 +11,18 @@ class SignUpForm(UserCreationForm):
         model = User
         fields = ('name', 'email', 'password1', 'password2')
 
-    
+# создание бюджета
+class createBudget(forms.ModelForm):
+    name = forms.CharField(max_length=50)
+    SpendToday = forms.CharField(max_length=50)
+
+    class Meta:
+        model = CurrentBudget
+        fields = ('name', 'SpendToday',)
+
+    # def save(self):
+    #     new_budget = CurrentBudget.objects.create(
+    #         name=self.cleaned_data['name'],
+    #         SpendToday=self.cleaned_data['SpendToday']
+    #     )
+    #     return new_budget
