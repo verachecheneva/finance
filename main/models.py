@@ -6,7 +6,7 @@ class UserManager(BaseUserManager):
     use_in_migrations = True
     def _create_user(self, email, password, **extra_fields):
         if not email:
-            raise ValueError('The given email must be set')
+            raise ValueError("The given email mustn't be set")
         email = self.normalize_email(email)
         user = self.model(email=email, **extra_fields)
         user.set_password(password)
@@ -26,13 +26,11 @@ class UserManager(BaseUserManager):
 class User(AbstractUser):
     username = None
     email = models.EmailField(_('email address'), unique=True)
-    #password = models.CharField(max_length=255)
     name = models.CharField(max_length=255)
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
     objects = UserManager()
-    #  user_ID = models.CharField(max_length=255) автоматом
-    #  budget_ID = models.CharField(max_length=255) обратные ссылки
+    
 
 class CurrentBudget(models.Model):
     user_ID = models.ForeignKey(User, on_delete = models.CASCADE)
