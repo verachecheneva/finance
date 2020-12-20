@@ -22,5 +22,5 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),  # URL-адрес раздела администрирования
     path('', include('main.urls')),   # возвращут домашнюю страничку, делает доступным последущий переход по URL-адресам, указанным в urls.py папки main
-    path('accounts/', include('django.contrib.auth.urls')),
+    path('accounts/', include('django.contrib.auth.urls')), #позволяет переходить по URL-адресам внутри /accounts, позволяя использовать систему аутентификации пользователя
 ]
