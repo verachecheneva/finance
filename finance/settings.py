@@ -10,22 +10,23 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
-from pathlib import Path
-import os
+from pathlib import Path #создает конкретный путь для платформы на которой выполняется код
+import os #функции для работы с операционной системой
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
-# Quick-start development settings - unsuitable for production
+# Настройки для быстрого старта разработки - не подходят для производства
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
+# необходимо держать секретный ключ в секрете 
 SECRET_KEY = '+205l3ngov5t$(@t=+ermjudvdx#=j*=4=m=l0&1wi^id5*qyl'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+#Список строк, представляющих имена домена / хоста, которые может обслуживать этот сайт Django.
 ALLOWED_HOSTS = []
 
 
@@ -41,7 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework'
 ]
-
+#для обработки запросов и ответов в Django
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
