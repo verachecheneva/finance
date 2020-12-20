@@ -6,9 +6,9 @@
     <title>Document</title>
 </head>
 <body>
-    {% extends 'blog/account.html' %}
     <h1>New budget</h1>
     <form method="POST" >
+        {% csrf_token %}
         {{ budget_form.as_p }}
         <p><input type="submit" value="Создать бюджет"></p>
     </form>

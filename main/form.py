@@ -17,7 +17,7 @@ class AddBudget(forms.ModelForm):
     SpendToday = forms.CharField(label='Сколько денег потратили сеглня', widget=forms.NumberInput())
     class Meta:
         model = CurrentBudget
-        fields = ('name', 'SpendToday')
+        fields = ('name', 'moneySum', 'SpendToday', 'SpendSum', 'AvaibleSumToday')
 
     # def save(self):
     #     new_budget = CurrentBudget.objects.create(

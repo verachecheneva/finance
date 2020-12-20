@@ -29,17 +29,17 @@ def register(request):
 
 
 def budget_new(request):
-    form_budget = AddBudget
-    budget_form = form_budget(request.POST or None)
     if request.method == 'POST':
-        form = CurrentBudget(request.POST)
-        if budget_form.is_valid():
-            budget = budget_form.save(commit=True)
-            # budget.SpendToday = request.user
+        form = AddBudget(request.POST)
+        if form.is_valid():
+            budget = form.save(commit=False)
+            budget.user_ID = request.user
             budget.save()
             budget_is = CurrentBudget.objects.filter(user_ID=request.user)
             return render(request, 'blog/account.html', {'budgets':budget_is })
-    return render(request, 'blog/budget_edit.html', {'budget_form': budget_form})
+        return render(request, 'blog/budget_edit.html', {'budgets_form': form })
+    form = AddBudget
+    return render(request, 'blog/budget_edit.html', {'budget_form': form})
 
 
     # contacts_form_data = {}
