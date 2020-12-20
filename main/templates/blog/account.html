@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Home</title>
+  <title>Account</title>
 </head>
 <body>
-  {{contacts_form_data}}
+  {% comment %} {{contacts_form_data}}
   <div>
     <a href="{% url 'budget_new' %}"><span></span></a>
     <form method = "post">
@@ -16,13 +16,14 @@
 
       <button type="submit">Создать бюджет</button>
     </form>
-  </div>
+  </div> {% endcomment %}
 
 
   {% comment %} {% for user in users %} {% endcomment %}
     {% comment %} <h1>Hello {{ user.name }} !</h1>
   {% endfor %} {% endcomment %}
-
+  <h1>Привет, ты на своей странице. </h1>
+  <p><a href="{% url 'budget_new' %}">Хочешь добавить бюджет?</a></p>
 
   {% for budget in budgets %}
     <div>

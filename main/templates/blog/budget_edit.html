@@ -8,9 +8,9 @@
 <body>
     {% extends 'blog/account.html' %}
     <h1>New budget</h1>
-    <form method="POST" >{% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Save</button>
+    <form method="POST" >
+        {{ budget_form.as_p }}
+        <p><input type="submit" value="Создать бюджет"></p>
     </form>
 </body>
 </html>

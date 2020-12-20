@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from . models import User, CurrentBudget
 from django.urls import reverse
 from django.views.generic.base import View
-from .form import createBudget
+from .form import AddBudget
 
 
 def home(request):
@@ -29,16 +29,17 @@ def register(request):
 
 
 def budget_new(request):
+    form_budget = AddBudget
+    budget_form = form_budget(request.POST or None)
     if request.method == 'POST':
         form = CurrentBudget(request.POST)
-        if form.is_valid():
-            budget = form.save(commit=False)
-            budget.SpendToday = request.user
+        if budget_form.is_valid():
+            budget = budget_form.save(commit=True)
+            # budget.SpendToday = request.user
             budget.save()
-            return redirect('budget_detail', pk=budget.pk)
-        else:
-            form = CurrentBudget()
-    return render(request, 'blog/budget_edit.html', {'form': form})
+            budget_is = CurrentBudget.objects.filter(user_ID=request.user)
+            return render(request, 'blog/account.html', {'budgets':budget_is })
+    return render(request, 'blog/budget_edit.html', {'budget_form': budget_form})
 
 
     # contacts_form_data = {}
@@ -57,7 +58,7 @@ def budget_new(request):
     # return render(request, 'blog/home.html', context)
 # class AddBudget(View):
 #     def post(self, request, pk):
-#         form = createBudget(request.POST)
+#         form = AddBudget(request.POST)
 #         if form.is_valid():
 #             form = form.save(commit=False)
 #             form.user_ID = pk

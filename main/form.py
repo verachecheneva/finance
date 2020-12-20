@@ -12,13 +12,12 @@ class SignUpForm(UserCreationForm):
         fields = ('name', 'email', 'password1', 'password2')
 
 # создание бюджета
-class createBudget(forms.ModelForm):
-    name = forms.CharField(max_length=50)
-    SpendToday = forms.CharField(max_length=50)
-
+class AddBudget(forms.ModelForm):
+    name = forms.CharField(label='Введите название бюджетаб', widget=forms.TextInput())
+    SpendToday = forms.CharField(label='Сколько денег потратили сеглня', widget=forms.NumberInput())
     class Meta:
         model = CurrentBudget
-        fields = ('name', 'SpendToday',)
+        fields = ('name', 'SpendToday')
 
     # def save(self):
     #     new_budget = CurrentBudget.objects.create(
