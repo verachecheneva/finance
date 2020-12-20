@@ -9,8 +9,8 @@
      <h1>Create an account</h1>
     <p>Please, sign up using the following form:</p>
     <form action="." method="post">
-        {{ user_form.as_p }}
         {% csrf_token %}
+        {{ user_form.as_p }}
         {% comment %} кодирует инфу пользователя  {% endcomment %}
         <p><input type="submit" value="Создать аккаунт"></p>
     </form>
