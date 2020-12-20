@@ -6,22 +6,7 @@
   <title>Account</title>
 </head>
 <body>
-  {% comment %} {{contacts_form_data}}
-  <div>
-    <a href="{% url 'budget_new' %}"><span></span></a>
-    <form method = "post">
-      {% csrf_token %}
-      Бюджет: <input type="text" name="name" id="name"> <br>
-      Сегодня Вы потратили: <input type="text" name="SpendToday" id="SpendToday"> <br>
 
-      <button type="submit">Создать бюджет</button>
-    </form>
-  </div> {% endcomment %}
-
-
-  {% comment %} {% for user in users %} {% endcomment %}
-    {% comment %} <h1>Hello {{ user.name }} !</h1>
-  {% endfor %} {% endcomment %}
   <h1>Привет, ты на своей странице. </h1>
   <p><a href="{% url 'budget_new' %}">Хочешь добавить бюджет?</a></p>
 

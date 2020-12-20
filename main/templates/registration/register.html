@@ -11,7 +11,6 @@
     <form action="." method="post">
         {% csrf_token %}
         {{ user_form.as_p }}
-        {% comment %} кодирует инфу пользователя  {% endcomment %}
         <p><input type="submit" value="Создать аккаунт"></p>
     </form>
 

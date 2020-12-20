@@ -46,8 +46,7 @@ class CurrentBudget(models.Model):
     def calcSpendSum(self):
         
         return (self.moneySum - self.SpendSum)/30
-    # def __str__(self):
-    #     return self.title
+
 
     
 

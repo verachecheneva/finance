@@ -41,39 +41,3 @@ def budget_new(request):
     form = AddBudget
     return render(request, 'blog/budget_edit.html', {'budget_form': form})
 
-
-    # contacts_form_data = {}
-
-    # if request.method == POST:
-    #     # contacts_form_data = request.POST
-    #     name = request.POST.get('name')
-    #     SpendToday = request.POST.get('SpendToday')
-
-    # contacts_form_data.update({'name':name})
-
-    # context = {
-    #     'page_header': 'New Budget',
-    #     'contacts_form_data':  contacts_form_data,
-    # }
-    # return render(request, 'blog/home.html', context)
-# class AddBudget(View):
-#     def post(self, request, pk):
-#         form = AddBudget(request.POST)
-#         if form.is_valid():
-#             form = form.save(commit=False)
-#             form.user_ID = pk
-#             form.save()
-#         return redirect("/")
-#         # budget_name = request.POST['name']
-#         # budget_SpendToday = request.POST['SpendToday']
-
-
-# def User_info(request):
-#     return render(request, 'main/user_info.html')
-
-# def budget_add(request):
-#     if request.method == "GET":
-#         budget = AddBudget()
-#     return render(request, 'main/budget_add.html', {
-#             'form': form
-#     })
