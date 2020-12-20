@@ -7,6 +7,9 @@ For more information on this file, see
 https://docs.djangoproject.com/en/3.1/howto/deployment/asgi/
 """
 
+# ASGI — это интерфейс для коммуникации между приложениями и серверами.
+# Позволяет асинхронным Python серверам и приложениям взаимодействовать друг с другом.
+
 import os
 
 from django.core.asgi import get_asgi_application
