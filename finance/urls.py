@@ -15,12 +15,12 @@ Including another URLconf
 """
 
 
-
+"""импорт функций, необходимых для реализации перехода между URL-адресами, из библиотек"""
 from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
-    path('admin/', admin.site.urls),  # URL-адрес раздела администрирования
-    path('', include('main.urls')),   # возвращут домашнюю страничку, делает доступным последущий переход по URL-адресам, указанным в urls.py папки main
-    path('accounts/', include('django.contrib.auth.urls')), #позволяет переходить по URL-адресам внутри /accounts, позволяя использовать систему аутентификации пользователя
+    path('admin/', admin.site.urls),   """URL-адрес раздела администрирования"""
+    path('', include('main.urls')),   """возвращут домашнюю страничку, делает доступным последущий переход по URL-адресам, указанным в urls.py папки main"""
+    path('accounts/', include('django.contrib.auth.urls')), """позволяет переходить по URL-адресам внутри /accounts, позволяя использовать систему аутентификации пользователя"""
 ]

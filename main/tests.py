@@ -13,11 +13,15 @@ class TestRegistrationProfile(TestCase):
         response = self.client.get(reverse('account'))
         self.assertEqual(response.status_code, 200)
     
+
+    """тест, нацеленный на проверку корректности добавленного бюджета"""
     def test_test_registered_user_new_budget(self):
-        self.client.force_login(self.user, backend=None)
-        self.client.post(reverse('budget_new'),{'name': 'Test', 'SpendToday': 222, 'moneySum': 100, 'AvaibleSumToday' : 4, 'SpendSum': 4})
-        self.assertEqual(CurrentBudget.objects.count(), 1)
+        self.client.force_login(self.user, backend=None) """инструмент тестирования, эмулирующий авторизацию пользователя на нашем сайте"""
+        self.client.post(reverse('budget_new'),{'name': 'Test', 'SpendToday': 222, 'moneySum': 100, 'AvaibleSumToday' : 4, 'SpendSum': 4}) """возвращение объекта Response в ответ на отправку тестовым клиентом запроса"""
+        self.assertEqual(CurrentBudget.objects.count(), 1) """проверка равенства, если условие не выполняется, следует провал теста"""
         budget = CurrentBudget.objects.first()
-        self.assertEqual(budget.name, 'Test')
+
+        """проверка равенста заданного тестом значения и ожидаемого результата"""
+        self.assertEqual(budget.name, 'Test') 
         self.assertEqual(budget.user_ID, self.user)
         self.assertEqual(budget.SpendToday, 222)
