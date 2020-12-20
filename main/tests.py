@@ -15,7 +15,7 @@ class TestRegistrationProfile(TestCase):
     
     def test_test_registered_user_new_budget(self):
         self.client.force_login(self.user, backend=None)
-        self.client.post(reverse('budget_new'),{'name': 'Test', 'SpendToday': 222})
+        self.client.post(reverse('budget_new'),{'name': 'Test', 'SpendToday': 222, 'moneySum': 100, 'AvaibleSumToday' : 4, 'SpendSum': 4})
         self.assertEqual(CurrentBudget.objects.count(), 1)
         budget = CurrentBudget.objects.first()
         self.assertEqual(budget.name, 'Test')
