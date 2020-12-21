@@ -43,17 +43,29 @@ class User(AbstractUser):
     objects = UserManager()
     
 
+
+"""Создаем класс модели бюджета"""
 class CurrentBudget(models.Model):
+    """Указываем поле, отвечающее за ID пользователя"""
     user_ID = models.ForeignKey(User, on_delete = models.CASCADE)
+    """Указываем поле, отвечающее за сумму, которой располагает пользователь"""
     moneySum = models.IntegerField(default = 0)
+    """Указываем поле, отвечающее за дату создания бюджета"""
     DateOfStart = models.DateTimeField(auto_now_add=True)
+    """Указываем поле, отвечающее за дату окончания действия бюджета"""
     DateOfFinish = models.DateTimeField( null=True, blank=True)
+    """Указываем поле, отвечающее за сумму денег потраченную в текущий день"""
     SpendToday = models.IntegerField(default = 0)
+    """Указываем поле, отвечающее за потраченную сумму денег"""
     SpendSum = models.IntegerField(default = 0)
+    """Указываем поле, отвечающее за оставшуюся сумму денег"""
     RestSum = models.IntegerField(default = 0)
+    """Указываем поле, отвечающее за доступную пользователю сумму дерег"""
     AvaibleSumToday = models.IntegerField(default = 0)
+    """Указываем поле, отвечающее за название бюджета"""
     name = models.CharField(max_length=255)
 
+    """функция калькулятора потраченной суммы денег"""
     def calcSpendSum(self):
         
         return (self.moneySum - self.SpendSum)/30
