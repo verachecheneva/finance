@@ -4,7 +4,7 @@ from django.contrib.auth.admin import UserAdmin as DjangoUserAdmin
 from django.utils.translation import ugettext_lazy as _
 from .models import User, CurrentBudget
 
-"""Регистрация созданный ранее моделей"""
+"""Регистрация созданныx ранее моделей"""
 admin.site.register(User) 
 admin.site.register(CurrentBudget)
 
