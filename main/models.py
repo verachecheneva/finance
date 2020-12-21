@@ -32,12 +32,17 @@ class UserManager(BaseUserManager):
             raise ValueError('Superuser must have is_superuser=True.')
         return self._create_user(email, password, **extra_fields)
 
-
+"""Создаём класс модели пользователя, используя AbstractUser для того, чтобы добавлять доп информацию о пользователе без необходимости создавать доп класс"""
 class User(AbstractUser):
+    """присваивание, ответственное за наличие имени пользователя"""
     username = None
+    """поле, отвечающее за почту пользователя"""
     email = models.EmailField(_('email address'), unique=True)
+    """поле, отвечающее за имя пользователя"""
     name = models.CharField(max_length=255)
+    """строка, указывающая имя поля модели пользователя, используемая в качестве уникального идентификатора"""
     USERNAME_FIELD = 'email'
+    """Список имён полей, которые будут запрашиваться при создании пользователя с помощью команды createsuperuser"""
     REQUIRED_FIELDS = []
     """Назначаем новый менеджер модели пользователя"""
     objects = UserManager()
