@@ -7,7 +7,7 @@ from django.utils.translation import ugettext_lazy as _
 class UserManager(BaseUserManager):
     """теперь будем использовать менеджеры моделей в миграции"""
     use_in_migrations = True
-    def _create_user(self, email, password, **extra_fields):
+    def create_user(self, email, password, **extra_fields):
         """избавляемся от username, вместо него обязательным полем будет email"""
         if not email:
             raise ValueError("The given email mustn't be set")
@@ -24,13 +24,7 @@ class UserManager(BaseUserManager):
         """определяем возможности такого пользователя"""
         extra_fields.setdefault('is_staff', True)
         extra_fields.setdefault('is_superuser', True)
-
-        """Пользователь обязательно должен иметь указанные выше поля"""
-        if extra_fields.get('is_staff') is not True:
-            raise ValueError('Superuser must have is_staff=True.')
-        if extra_fields.get('is_superuser') is not True:
-            raise ValueError('Superuser must have is_superuser=True.')
-        return self._create_user(email, password, **extra_fields)
+        return self.create_user(email, password, **extra_fields)
 
 """Создаём класс модели пользователя, используя AbstractUser для того, чтобы добавлять доп информацию о пользователе без необходимости создавать доп класс"""
 class User(AbstractUser):

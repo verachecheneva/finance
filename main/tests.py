@@ -9,7 +9,7 @@ class TestRegistrationProfile(TestCase):
         """тесты позволяют работать с клиентом прямо из консоли"""
         self.client = Client()
         """создем пользователя, заполняем необходимые для этого поля"""
-        self.user = User.objects._create_user(name = 'sarah', email='flower@gmail.com', password='qazwsx1234')
+        self.user = User.objects.create_user(name = 'sarah', email='flower@gmail.com', password='qazwsx1234')
 
     """Проверяем что этот пользователь имеет профиль"""
     def test_user_has_profile(self):
