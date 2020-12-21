@@ -21,9 +21,9 @@ class SignUpForm(UserCreationForm):
 """создание формы для добавления бюджета"""
 class AddBudget(forms.ModelForm): 
     """создаём форму для регистрации"""
-    name = forms.CharField(label='Введите название бюджетаб', widget=forms.TextInput())   
+    name = forms.CharField(label='Введите название бюджета', widget=forms.TextInput())   
     """заводим переменные, в которых будет храниться информация о бюджете"""
-    moneySum = forms.CharField(label='Сколько денег потратили сеглня', widget=forms.NumberInput())
+    moneySum = forms.CharField(label='Сколько денег потратили сегодня', widget=forms.NumberInput())
     SpendToday = forms.CharField(label='Ваш бюджет:', widget=forms.NumberInput())
     SpendSum = forms.CharField(label='Всего потрачено', widget=forms.NumberInput())
     AvaibleSumToday = forms.CharField(label='Сегодня Вам доступно', widget=forms.NumberInput())
