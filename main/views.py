@@ -24,6 +24,8 @@ from .form import SignUpForm
 
 def register(request):
     """страница регистрации, если регистрация проходит успешно пользователь переходит на следующую страницу, иначе остается на странице регистрации"""
+    """форма класса берется из файла form"""
+    """делаем запрос на отправку корректно заполненной формы"""
     form_class = SignUpForm 
     user_form = form_class(request.POST or None)
     if request.method == 'POST':
