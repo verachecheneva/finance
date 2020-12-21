@@ -2,26 +2,21 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser, BaseUserManager
 from django.utils.translation import ugettext_lazy as _
 
-"""переопределение модели авторизации пользователя"""
-"""username не используется"""
+"""информация о том, как переопределить модель авторизации джанго была взята с сайта http://djangonauts.ru/content/pereopredelenie-polej-standartnoj-sistemy-autentif/"""
 class UserManager(BaseUserManager):
+    """переопределение модели авторизации пользователя, без использования username"""
     """теперь будем использовать менеджеры моделей в миграции"""
     use_in_migrations = True
     def create_user(self, email, password, **extra_fields):
-        """избавляемся от username, вместо него обязательным полем будет email"""
         if not email:
             raise ValueError("The given email mustn't be set")
-        """приводим email к нужному виду, все буквы должны быть в нижнем регистре"""
-        """Создаем пользователя"""
         email = self.normalize_email(email)
         user = self.model(email=email, **extra_fields)
         user.set_password(password)
-        """используем using параметр для определения используемой базы данных, это дефолтное знаение, оно прописасно в settings.py"""
         user.save(using=self._db)
         return user
-    """определяем еще одну модель авторизации, теперь она необходима для админа"""
+    """определяем еще одну модель авторизации, теперь она необходима для админа c расширенными возможностями"""
     def create_superuser(self, email, password, **extra_fields):
-        """определяем возможности такого пользователя"""
         extra_fields.setdefault('is_staff', True)
         extra_fields.setdefault('is_superuser', True)
         return self.create_user(email, password, **extra_fields)
