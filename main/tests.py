@@ -11,7 +11,7 @@ class TestRegistrationProfile(TestCase):
         """создем пользователя, заполняем необходимые для этого поля"""
         self.user = User.objects._create_user(name = 'sarah', email='flower@gmail.com', password='qazwsx1234')
 
-    """Проверяем что """
+    """Проверяем что этот пользователь имеет профиль"""
     def test_user_has_profile(self):
         """имитация входа на сайт"""
         self.client.force_login(self.user, backend=None)
