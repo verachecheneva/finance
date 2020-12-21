@@ -19,11 +19,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+"""URL-адрес раздела администрирования"""
+"""возвращут домашнюю страничку, делает доступным последущий переход по URL-адресам, указанным в urls.py папки main"""
+"""позволяет переходить по URL-адресам внутри /accounts, позволяя использовать систему аутентификации пользователя"""
+
 urlpatterns = [
-    """URL-адрес раздела администрирования""",
     path('admin/', admin.site.urls),  
-    """возвращут домашнюю страничку, делает доступным последущий переход по URL-адресам, указанным в urls.py папки main""", 
-    path('', include('main.urls')),   
-    """позволяет переходить по URL-адресам внутри /accounts, позволяя использовать систему аутентификации пользователя""",
+    path('', include('main.urls')),
     path('accounts/', include('django.contrib.auth.urls')), 
 ]

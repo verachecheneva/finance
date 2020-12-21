@@ -6,12 +6,18 @@ from .models import CurrentBudget, User
 class TestRegistrationProfile(TestCase):
     """регистрируем пользователя, с которым будут проходить тесты"""
     def setUp(self):
+        """тесты позволяют работать с клиентом прямо из консоли"""
         self.client = Client()
+        """создем пользователя, заполняем необходимые для этого поля"""
         self.user = User.objects._create_user(name = 'sarah', email='flower@gmail.com', password='qazwsx1234')
 
+    """Проверяем что """
     def test_user_has_profile(self):
+        """имитация входа на сайт"""
         self.client.force_login(self.user, backend=None)
+        """извлекаем страницу"""
         response = self.client.get(reverse('account'))
+        """если страница найдена, ошибок нет, то status_code принимает значение 200"""
         self.assertEqual(response.status_code, 200)
     
 
